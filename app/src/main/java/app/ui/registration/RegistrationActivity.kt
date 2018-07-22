@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import app.model.USER
 import app.model.UserPrefs
 import app.util.hide
 import app.util.hideKeyboard
@@ -180,11 +181,11 @@ class RegistrationActivity : AppCompatActivity() {
         showProcessBar(true)
         val userDetails = mapOf("userId" to user.uid, "name" to preferredName, "phone" to phoneNumber,
                 "countryCode" to country_code_picker.defaultCountryCodeAsInt,
-                "lastUpdated" to Timestamp.now(), "verified" to true)
+                "lastUpdated" to Timestamp.now(), "verified" to true, "user" to intent.getSerializableExtra("USER"))
 
         fireStoreDB.collection("users").document(user.uid)
                 .set(userDetails)
-                .addOnFailureListener(this, { Timber.e(it, "Error adding phone auth info") })
+                .addOnFailureListener(this) { Timber.e(it, "Error adding phone auth info") }
                 .addOnFailureListener { Timber.e(it, "Error adding phone auth info") }
                 .addOnSuccessListener {
                     Timber.d("DocumentSnapshot successfully written!")
@@ -209,6 +210,7 @@ class RegistrationActivity : AppCompatActivity() {
         UserPrefs.name = preferredName
         UserPrefs.phone = phoneNumber
         UserPrefs.countryCode = defaultCountryCodeAsInt
+        UserPrefs.user = intent.getSerializableExtra("USER") as USER
     }
 
     private fun showLoginGroup() {

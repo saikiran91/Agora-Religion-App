@@ -29,7 +29,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/continue_btn"
         app:layout_constraintEnd_toEndOf="@+id/logo_iv"
@@ -42,8 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Broadcaster"
             android:checked="true"
+            android:text="Broadcaster"
 
             android:textSize="20sp" />
 
@@ -64,6 +63,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onContinueClicked"
         android:text="Continue"
         android:textColor="@color/white"
         app:backgroundTint="@color/colorAccent"
