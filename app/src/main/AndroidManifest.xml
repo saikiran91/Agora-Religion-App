@@ -24,7 +24,10 @@
             </intent-filter>
         </activity>
         <activity android:name="app.ui.registration.RegistrationActivity" />
-        <activity android:name="app.ui.userselection.UserSelectionActivity"></activity>
+        <activity android:name="app.ui.userselection.UserSelectionActivity" />
+        <activity
+            android:name="app.ui.mvptemplate.HomeActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
