@@ -13,8 +13,8 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import org.greenrobot.eventbus.EventBus
 import app.model.ShowToastEvent
+import org.greenrobot.eventbus.EventBus
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,6 +34,10 @@ fun View.show() {
 
 fun View.hide() {
     this.visibility = View.GONE
+}
+
+fun View.invisible() {
+    this.visibility = View.INVISIBLE
 }
 
 
@@ -106,3 +110,6 @@ inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Fragmen
 fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
     supportFragmentManager.inTransaction { replace(frameId, fragment) }
 }
+
+fun EditText.getTrimmedText() = text.toString().trim()
+

@@ -2,18 +2,18 @@ package app.ui.home
 
 import android.os.Bundle
 import app.mvpbase.MvpBaseActivity
-import app.ui.mvptemplate.HomePresenter
-import app.ui.mvptemplate.HomeView
+import app.ui.mvptemplate.TemplatePresenter
+import app.ui.mvptemplate.TemplateView
 import io.agora.religionapp.R
 import javax.inject.Inject
 
 /**
  * Created by saiki on 22-07-2018.
  **/
-class HomeActivity : MvpBaseActivity(), HomeView {
+class HomeActivity : MvpBaseActivity(), TemplateView {
 
     @Inject
-    lateinit var presenter: HomePresenter
+    lateinit var presenter: TemplatePresenter
 
     override val layout: Int
         get() = R.layout.activity_home
@@ -22,11 +22,9 @@ class HomeActivity : MvpBaseActivity(), HomeView {
         super.onCreate(savedInstanceState)
         activityComponent().inject(this)
         presenter.attachView(this)
-
     }
 
     override fun showProgress() {
-
     }
 
     override fun hideProgress() {

@@ -7,7 +7,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.naughtynice.naughtyapp"
+        applicationId "io.agora.religionapp"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
@@ -62,6 +62,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
 
     // optional, support saving enum value and ordinal
-    compile 'com.chibatching.kotpref:enum-support:2.5.0'
+    implementation 'com.chibatching.kotpref:enum-support:2.5.0'
+    implementation 'net.danlew:android.joda:2.9.9.4'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -19,9 +19,18 @@ enum class USER {
     BROADCASTER
 }
 
-
 //Models
 
+data class FireUser(val userId: String = "", val name: String = "",
+                    val phone: String = "0", val countryCode: Int = 0,
+                    val lastUpdated: Long = 0L, val verified: Boolean = false) {
+    fun getPhoneWithCountryCode() = "+$countryCode-$phone"
+}
+
+data class Event(val id: String = "", val title: String = "", val location: String = "",
+                 val description: String = "", val date: Long = 0L, val start: Long = 0L,
+                 val end: Long = 0L, val lastUpdated: Long,
+                 val createdOn: Long = 0L, val user: FireUser = FireUser())
 
 
 

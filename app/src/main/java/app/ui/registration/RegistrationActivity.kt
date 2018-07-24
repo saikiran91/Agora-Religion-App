@@ -201,7 +201,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun launchNextActivity() {
         // showSignoutGroup();
-//        startActivity(Intent(this, HomeActivity::class.java))
+//        startActivity(Intent(this, OngoingBroadcasterFragment::class.java))
         finish()
     }
 

@@ -13,6 +13,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import app.util.regOnce
 import io.agora.religionapp.BuildConfig
+import net.danlew.android.joda.JodaTimeAndroid
 
 import timber.log.Timber
 
@@ -41,7 +42,7 @@ class App : MultiDexApplication() {
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
         EventBus.getDefault().regOnce(this)
         instance = this
-
+        JodaTimeAndroid.init(this)
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
