@@ -29,7 +29,7 @@ class EditTextDP : TextInputEditText, View.OnClickListener, DatePickerDialog.OnD
             set(Calendar.DAY_OF_MONTH, dayOfMonth)
             val formatter = SimpleDateFormat(DATE_SERVER_PATTERN,
                     Locale.ENGLISH)
-            setText(formatter.format(this.time))
+            setText(formatter.format(time))
         }
     }
 
@@ -41,9 +41,10 @@ class EditTextDP : TextInputEditText, View.OnClickListener, DatePickerDialog.OnD
         }
     }
 
+
     fun getDate() = when {
         ::calendar.isInitialized -> calendar
-        else -> throw (RuntimeException("Date not set"))
+        else -> null
     }
 
     companion object {

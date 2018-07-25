@@ -25,9 +25,8 @@
         </activity>
         <activity android:name="app.ui.registration.RegistrationActivity" />
         <activity android:name="app.ui.userselection.UserSelectionActivity" />
-        <activity
-            android:name="app.ui.ongoingbroadcaster.OngoingBroadcasterFragment"
-            android:theme="@style/AppTheme" />
+        <activity android:name="app.ui.home.HomeActivity" />
+        <activity android:name="app.ui.addevent.AddEventActivity" />
     </application>
 
 </manifest>

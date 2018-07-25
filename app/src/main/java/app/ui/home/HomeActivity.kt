@@ -1,7 +1,10 @@
 package app.ui.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import app.mvpbase.MvpBaseActivity
+import app.ui.addevent.AddEventActivity
 import app.ui.mvptemplate.TemplatePresenter
 import app.ui.mvptemplate.TemplateView
 import io.agora.religionapp.R
@@ -36,5 +39,10 @@ class HomeActivity : MvpBaseActivity(), TemplateView {
     override fun onDestroy() {
         super.onDestroy()
         presenter.detachView()
+    }
+
+    fun onAddEventClicked(view: View) {
+        startActivity(Intent(this, AddEventActivity::class.java))
+
     }
 }

@@ -15,6 +15,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import app.model.ShowToastEvent
 import org.greenrobot.eventbus.EventBus
+import org.joda.time.DateTime
+import org.joda.time.format.DateTimeFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,6 +24,14 @@ import java.util.*
 fun Date.getSimpleTime(): String {
     val dateFormat = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
     return dateFormat.format(this)
+}
+
+
+ fun DateTime.parseDate(): String {
+    //Thursday, February 01, 2018
+    //4 Jul '18 12:08 AM
+    val format = DateTimeFormat.forPattern("d MMM, ''yy hh:mm a")
+    return format.print(this)
 }
 
 fun View.visible(b: Boolean = true) {
@@ -39,7 +49,6 @@ fun View.hide() {
 fun View.invisible() {
     this.visibility = View.INVISIBLE
 }
-
 
 fun View.hideKeyboard() {
     val input = this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

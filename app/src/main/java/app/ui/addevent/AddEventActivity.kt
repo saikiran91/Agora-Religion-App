@@ -3,6 +3,7 @@ package app.ui.addevent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import app.mvpbase.MvpBaseActivity
 import app.util.*
 import io.agora.religionapp.R
@@ -25,13 +26,6 @@ class AddEventActivity : MvpBaseActivity(), AddEventView {
         activityComponent().inject(this)
         presenter.attachView(this)
         setSupportActionBar(toolbar)
-        initPickers()
-    }
-
-    private fun initPickers() {
-        TextViewDatePicker(this, date_et)
-        TextViewTimePicker(this, start_et)
-        TextViewTimePicker(this, end_et)
     }
 
     override fun showProgress() {
@@ -44,6 +38,10 @@ class AddEventActivity : MvpBaseActivity(), AddEventView {
 
     override fun showError(message: String) {
         showToastEvent(message)
+    }
+
+    override fun exitActivity() {
+        finish()
     }
 
     override fun onDestroy() {
@@ -59,14 +57,13 @@ class AddEventActivity : MvpBaseActivity(), AddEventView {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_save -> {
-
-                if ()
-
-                    presenter.saveEvent(title_et.getTrimmedText(), location_et.getTrimmedText(),
-                            description_et.getTrimmedText(), date_et.getTrimmedText(),
-                            start_et.getTrimmedText(), end_et.getTrimmedText())
+                findViewById<View>(android.R.id.content).hideKeyboard()
+                presenter.saveEvent(title_et.getTrimmedText(), location_et.getTrimmedText(),
+                        description_et.getTrimmedText(), start_date_et.getDate(),
+                        start_time_et.getTime(), end_date_et.getDate(), end_time_et.getTime())
             }
             android.R.id.home -> {
+                findViewById<View>(android.R.id.content).hideKeyboard()
                 finish()
             }
         }

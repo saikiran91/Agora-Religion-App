@@ -9,4 +9,5 @@ interface AddEventView : MvpView {
     fun showProgress()
     fun hideProgress()
     fun showError(message: String)
+    fun exitActivity()
 }

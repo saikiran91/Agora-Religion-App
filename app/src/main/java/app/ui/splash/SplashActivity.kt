@@ -3,6 +3,7 @@ package app.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import app.mvpbase.MvpBaseActivity
+import app.ui.home.HomeActivity
 import app.ui.userselection.UserSelectionActivity
 import app.util.hide
 import app.util.show
@@ -41,7 +42,7 @@ class SplashActivity : MvpBaseActivity(), SplashView {
     }
 
     override fun launchBroadcasterActivity() {
-
+        startActivity(Intent(this, HomeActivity::class.java))
     }
 
     override fun launchViewerActivity() {

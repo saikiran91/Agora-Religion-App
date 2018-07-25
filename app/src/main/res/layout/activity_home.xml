@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="app.ui.splash.SplashActivity">
+    tools:context="app.ui.home.HomeActivity">
 
 
     <ImageView
@@ -22,17 +22,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/srisrilogo" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyle"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:onClick="onAddEventClicked"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_iv" />
+        app:srcCompat="@drawable/srisrilogo" />
 
 
 </android.support.constraint.ConstraintLayout>

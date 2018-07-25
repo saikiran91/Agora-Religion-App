@@ -1,5 +1,6 @@
 package app.ui.upcomingbroadcaster
 
+import android.databinding.ObservableArrayList
 import android.os.Bundle
 import app.mvpbase.MvpBaseFragment
 import app.ui.ongoingbroadcaster.OngoingBroadcasterPresenter
@@ -14,6 +15,7 @@ class UpcomingBroadcasterFragment : MvpBaseFragment(), OngoingBroadcasterView {
 
     @Inject
     lateinit var presenter: OngoingBroadcasterPresenter
+
 
     override val layout: Int
         get() = R.layout.fragment_broadcaster_upcoming

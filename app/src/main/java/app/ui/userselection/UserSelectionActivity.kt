@@ -27,10 +27,13 @@ class UserSelectionActivity : MvpBaseActivity(), UserSelectionView {
         activityComponent().inject(this)
         presenter.attachView(this)
 
+        //By default it is Broadcaster
+        presenter.onBroadcasterSelected()
+
         radio_group.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
-                R.id.viewer_radio -> presenter.onBroadcasterSelected()
-                R.id.broadcaster_radio -> presenter.onViewerSelected()
+                R.id.viewer_radio -> presenter.onViewerSelected()
+                R.id.broadcaster_radio -> presenter.onBroadcasterSelected()
                 else -> showToastEvent("$checkedId not found")
             }
         }
@@ -38,12 +41,12 @@ class UserSelectionActivity : MvpBaseActivity(), UserSelectionView {
 
     override fun launchBroadcasterRegistration(user: USER) {
         startActivity(Intent(this, RegistrationActivity::class.java)
-                .apply { putExtra("USER", user)})
+                .apply { putExtra("USER", user) })
     }
 
     override fun launchViewerRegistration(user: USER) {
         startActivity(Intent(this, RegistrationActivity::class.java)
-                .apply { putExtra("USER", user)})
+                .apply { putExtra("USER", user) })
     }
 
     override fun showError(message: String) {

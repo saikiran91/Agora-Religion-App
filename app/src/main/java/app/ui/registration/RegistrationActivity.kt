@@ -1,5 +1,6 @@
 package app.ui.registration
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
@@ -7,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import app.model.USER
 import app.model.UserPrefs
+import app.ui.home.HomeActivity
 import app.util.hide
 import app.util.hideKeyboard
 import app.util.show
@@ -179,11 +181,12 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun addUserToFireStore(user: FirebaseUser) {
         showProcessBar(true)
+        val userRole = (intent.getSerializableExtra("USER") as USER).name
         val userDetails = mapOf("userId" to user.uid, "name" to preferredName, "phone" to phoneNumber,
                 "countryCode" to country_code_picker.defaultCountryCodeAsInt,
-                "lastUpdated" to Timestamp.now(), "verified" to true, "user" to intent.getSerializableExtra("USER"))
+                "lastUpdated" to Timestamp.now(), "verified" to true, "user" to userRole)
 
-        fireStoreDB.collection("users").document(user.uid)
+        fireStoreDB.collection("user").document(user.uid)
                 .set(userDetails)
                 .addOnFailureListener(this) { Timber.e(it, "Error adding phone auth info") }
                 .addOnFailureListener { Timber.e(it, "Error adding phone auth info") }
@@ -201,7 +204,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun launchNextActivity() {
         // showSignoutGroup();
-//        startActivity(Intent(this, OngoingBroadcasterFragment::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
 

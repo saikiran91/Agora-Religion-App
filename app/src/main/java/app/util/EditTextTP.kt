@@ -31,9 +31,9 @@ class EditTextTP : TextInputEditText, View.OnClickListener, TimePickerDialog.OnT
             val formatter24 = SimpleDateFormat(TIME_24_SERVER_PATTERN, Locale.ENGLISH)
             val formatter12 = SimpleDateFormat(TIME_12_SERVER_PATTERN, Locale.ENGLISH)
             setText(if (DateFormat.is24HourFormat(context))
-                formatter24.format(calendar.time)
+                formatter24.format(time)
             else
-                formatter12.format(calendar.time))
+                formatter12.format(time))
         }
     }
 
@@ -47,7 +47,7 @@ class EditTextTP : TextInputEditText, View.OnClickListener, TimePickerDialog.OnT
 
     fun getTime() = when {
         ::calendar.isInitialized -> calendar
-        else -> throw (RuntimeException("Time not set"))
+        else -> null
     }
 
     companion object {
