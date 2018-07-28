@@ -26,6 +26,14 @@ class AddEventActivity : MvpBaseActivity(), AddEventView {
         activityComponent().inject(this)
         presenter.attachView(this)
         setSupportActionBar(toolbar)
+
+
+
+        test_btn.setOnClickListener {
+            description_et.setText("Sri Sri Ravi Shankar travels to over 100 cities per year, spreading joy and wisdom. From slums to parliaments, he spreads a message of peace through yoga and meditation, and living with human values. and living with human values.")
+            location_et.setText("San Francisco, California, United States")
+            title_et.setText("Guru Purnima Celebrations")
+        }
     }
 
     override fun showProgress() {

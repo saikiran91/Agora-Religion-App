@@ -28,6 +28,22 @@ enum class EventStatus {
     COMPLETED
 }
 
+data class Question(val id: String = "",
+                    val answered: Boolean = false,
+                    val eventId: String = "",
+                    val question: String = "",
+                    val userId: String = "",
+                    val userName: String = "",
+                    val isRead: Boolean = false)
+
+data class Chat(val id: String,
+                val message: String,
+                val userId: String,
+                val userName: String,
+                val eventId: String,
+                val sendDate: Long)
+
+
 //Models
 
 data class FireUser(val userId: String = "", val name: String = "",
@@ -40,11 +56,10 @@ data class Event(val id: String = "", val title: String = "", val location: Stri
                  val description: String = "", val start: Long = 0L,
                  val end: Long = 0L, val lastUpdated: Long = 0L,
                  val createdOn: Long = 0L, var user: DocumentReference? = null,
-                 val eventStatus: EventStatus = EventStatus.NONE) {
-    fun getParsedDate() = "${DateTime(start).parseDate()} - ${DateTime(end).parseDate()}".trim()
-}
+                 val eventStatus: EventStatus = EventStatus.NONE)
 
 
+fun Event.parsedDate() = "${DateTime(start).parseDate()} - ${DateTime(end).parseDate()}".trim()
 
 
 

@@ -50,6 +50,7 @@ constructor(private val dataManager: DataManager) : BasePresenter<AddEventView>(
                                 },
                                 { t ->
                                     t.printStackTrace()
+                                    mvpView?.hideProgress()
                                     mvpView?.showError(t.message ?: "saveEvent error")
                                 }))
             }

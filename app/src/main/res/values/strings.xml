@@ -3,4 +3,5 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="agora_app_id">4073f35686694b87abb2cb2535a6b9ca</string>
 </resources>

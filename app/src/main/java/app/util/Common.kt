@@ -9,11 +9,13 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
+import android.text.Html
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import app.model.ShowToastEvent
+import com.google.gson.Gson
 import org.greenrobot.eventbus.EventBus
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
@@ -27,7 +29,7 @@ fun Date.getSimpleTime(): String {
 }
 
 
- fun DateTime.parseDate(): String {
+fun DateTime.parseDate(): String {
     //Thursday, February 01, 2018
     //4 Jul '18 12:08 AM
     val format = DateTimeFormat.forPattern("d MMM, ''yy hh:mm a")
@@ -122,3 +124,42 @@ fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
 
 fun EditText.getTrimmedText() = text.toString().trim()
 
+fun Context.showDialogWithAction(message: String,
+                                 title: String = "Alert",
+                                 onPositiveClick: (() -> Unit)? = null,
+                                 okText: String = "Ok",
+                                 cancelText: String = "Cancel",
+                                 onNeutralClick: (() -> Unit)? = null,
+                                 onNegativeClick: (() -> Unit)? = null,
+                                 neutralText: String? = null): AlertDialog {
+    val dialog = AlertDialog.Builder(this).apply {
+        setMessage(Html.fromHtml(message))
+        setTitle(title)
+        setPositiveButton(okText) { dialogInterface, _ ->
+            onPositiveClick?.invoke()
+            dialogInterface.dismiss()
+        }
+        setNegativeButton(cancelText) { dialogInterface, _ ->
+            onNegativeClick?.invoke()
+            dialogInterface.dismiss()
+        }
+        neutralText?.let {
+            setNeutralButton(it) { dialogInterface, _ ->
+                onNeutralClick?.invoke()
+                dialogInterface.dismiss()
+            }
+        }
+    }.create()
+    dialog.show()
+    return dialog
+}
+
+fun String.decodeFromBase64(): String {
+    return android.util.Base64.decode(this, android.util.Base64.DEFAULT).toString(charset("UTF-8"))
+}
+
+fun String.encodeToBase64(): String {
+    return android.util.Base64.encodeToString(this.toByteArray(charset("UTF-8")), android.util.Base64.DEFAULT)
+}
+
+fun Gson.encode(obj: Any) = toJson(obj)

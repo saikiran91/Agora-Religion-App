@@ -4,23 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="app.ui.home.HomeActivity">
+    tools:context="app.ui.viewer.home.HomeActivity">
 
-
-    <ImageView
-        android:id="@+id/logo_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/srisrilogo" />
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/unselected_tab">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/live_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Live" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/upcoming_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upcoming" />
+
+    </android.support.design.widget.TabLayout>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_event"
@@ -29,11 +38,23 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:clickable="true"
+        android:tint="@color/white"
         android:onClick="onAddEventClicked"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/srisrilogo" />
+        app:srcCompat="@drawable/ic_add" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab_layout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:background="@color/divider" />
 
 
 </android.support.constraint.ConstraintLayout>

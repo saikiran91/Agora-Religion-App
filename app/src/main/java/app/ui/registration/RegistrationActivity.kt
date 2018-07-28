@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Toast
 import app.model.USER
 import app.model.UserPrefs
-import app.ui.home.HomeActivity
+import app.ui.viewer.home.HomeActivity
 import app.util.hide
 import app.util.hideKeyboard
 import app.util.show
@@ -204,7 +204,12 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun launchNextActivity() {
         // showSignoutGroup();
-        startActivity(Intent(this, HomeActivity::class.java))
+        val userRole = (intent.getSerializableExtra("USER") as USER)
+        if (userRole == USER.BROADCASTER)
+            startActivity(Intent(this, app.ui.home.HomeActivity::class.java))
+        else
+            startActivity(Intent(this, HomeActivity::class.java))
+
         finish()
     }
 

@@ -14,11 +14,20 @@ android {
         versionName "1.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+
+        ndk {
+            abiFilters "armeabi-v7a" //,"arm64-v8a"//,"x86"
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
     dataBinding.enabled true
@@ -64,5 +73,9 @@ dependencies {
     // optional, support saving enum value and ordinal
     implementation 'com.chibatching.kotpref:enum-support:2.5.0'
     implementation 'net.danlew:android.joda:2.9.9.4'
+
+    implementation 'io.agora.rtc:full-sdk:2.2.3'
+
+    implementation 'com.google.code.gson:gson:2.8.4'
 }
 apply plugin: 'com.google.gms.google-services'

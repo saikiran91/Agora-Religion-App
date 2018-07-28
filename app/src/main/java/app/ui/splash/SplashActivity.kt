@@ -46,6 +46,7 @@ class SplashActivity : MvpBaseActivity(), SplashView {
     }
 
     override fun launchViewerActivity() {
+        startActivity(Intent(this, app.ui.viewer.home.HomeActivity::class.java))
 
     }
 

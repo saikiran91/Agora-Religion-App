@@ -2,7 +2,6 @@ package app.ui.mvptemplate
 
 import android.os.Bundle
 import app.mvpbase.MvpBaseActivity
-import app.ui.ongoingbroadcaster.OngoingBroadcasterView
 import io.agora.religionapp.R
 import javax.inject.Inject
 
