@@ -27,5 +27,6 @@ constructor(private val dataManager: DataManager) : BasePresenter<UserSelectionV
             USER.VIEWER -> mvpView?.launchViewerRegistration(user)
             USER.BROADCASTER -> mvpView?.launchBroadcasterRegistration(user)
         }
+        mvpView?.exitActivity()
     }
 }

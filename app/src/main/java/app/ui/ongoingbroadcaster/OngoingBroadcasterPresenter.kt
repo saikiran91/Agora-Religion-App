@@ -57,7 +57,7 @@ constructor(private val dataManager: DataManager) : BasePresenter<OngoingBroadca
                 .fetchAndListenEvents(listOf(EventStatus.NONE, EventStatus.LIVE), forBroadcaster = true)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    val validSchedule = it.filter { interval(Date(it.start), Date()) < 60 }
+                    val validSchedule = it.filter { (interval(Date(it.start), Date()) < 60) || it.eventStatus == EventStatus.LIVE }
                     listOfEvents.clearAndAddAll(validSchedule)
                     mvpView.hideProgress()
                 }, {

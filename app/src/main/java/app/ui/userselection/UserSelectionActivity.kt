@@ -15,6 +15,9 @@ import javax.inject.Inject
  * Created by saiki on 22-07-2018.
  **/
 class UserSelectionActivity : MvpBaseActivity(), UserSelectionView {
+    override fun exitActivity() {
+        finish()
+    }
 
     @Inject
     lateinit var presenter: UserSelectionPresenter

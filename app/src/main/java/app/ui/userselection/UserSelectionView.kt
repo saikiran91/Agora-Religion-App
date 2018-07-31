@@ -10,4 +10,5 @@ interface UserSelectionView : MvpView {
     fun launchBroadcasterRegistration(user: USER)
     fun launchViewerRegistration(user: USER)
     fun showError(message: String)
+    fun exitActivity()
 }

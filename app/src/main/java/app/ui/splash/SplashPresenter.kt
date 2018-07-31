@@ -23,6 +23,6 @@ constructor(private val dataManager: DataManager) : BasePresenter<SplashView>() 
                 USER.BROADCASTER -> mvpView.launchBroadcasterActivity()
             }
             mvpView.exitSplash()
-        }, 0)
+        }, 2000)
     }
 }

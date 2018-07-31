@@ -18,7 +18,6 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name="app.ui.splash.SplashActivity"
-            android:label="@string/title_activity_splash"
             android:theme="@style/AppTheme.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +28,8 @@
         <activity android:name="app.ui.registration.RegistrationActivity" />
         <activity android:name="app.ui.userselection.UserSelectionActivity" />
         <activity android:name="app.ui.home.HomeActivity" />
-        <activity android:name="app.ui.addevent.AddEventActivity" />
+        <activity android:name="app.ui.addevent.AddEventActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name="app.ui.liveboradcaster.LiveBroadcasterActivity" />
         <activity android:name="app.ui.liveboradcaster.VideoChatViewActivity" />
 

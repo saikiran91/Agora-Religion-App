@@ -41,7 +41,7 @@ class EditTextTP : TextInputEditText, View.OnClickListener, TimePickerDialog.OnT
         Calendar.getInstance(TimeZone.getDefault()).run {
             TimePickerDialog(context, this@EditTextTP,
                     get(Calendar.HOUR_OF_DAY), get(Calendar.MINUTE),
-                    !DateFormat.is24HourFormat(context)).show()
+                    DateFormat.is24HourFormat(context)).show()
         }
     }
 
