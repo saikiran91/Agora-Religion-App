@@ -34,7 +34,7 @@ data class Question(val id: String = "",
                     val question: String = "",
                     val userId: String = "",
                     val userName: String = "",
-                    val isRead: Boolean = false)
+                    var isRead: Boolean = false)
 
 data class Chat(val id: String,
                 val message: String,

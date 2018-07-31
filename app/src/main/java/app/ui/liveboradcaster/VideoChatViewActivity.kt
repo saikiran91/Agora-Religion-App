@@ -22,6 +22,8 @@ import android.widget.Toast
 import app.model.Question
 import app.model.UserPrefs
 import app.util.clearAndAddAll
+import app.util.hide
+import app.util.show
 import app.util.visible
 import com.github.nitrico.lastadapter.LastAdapter
 import com.google.firebase.firestore.FirebaseFirestore
@@ -247,8 +249,14 @@ class VideoChatViewActivity : AppCompatActivity(), VideoViewAdapter.VideoSelecte
     }
 
     fun onNotesClicked(view: View) {
+        if (!question_list.isShown) {
+            count_tv.hide()
+            count_tv.text = ""
+            setAllQuestionAsRead()
+        }
         question_list.visible(!question_list.isShown)
     }
+
 
     // Tutorial Step 1
     private fun initializeAgoraEngine() {
@@ -330,7 +338,6 @@ class VideoChatViewActivity : AppCompatActivity(), VideoViewAdapter.VideoSelecte
 
 
     override fun onBackPressed() {
-        super.onBackPressed()
         if (question_list.isShown) {
             question_list.visibility = View.GONE
         } else {
@@ -378,7 +385,25 @@ class VideoChatViewActivity : AppCompatActivity(), VideoViewAdapter.VideoSelecte
                     }
         }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
             listOfQuestions.clearAndAddAll(it)
+            if (listOfQuestions.none { !it.isRead }) {
+                count_tv.text = ""
+                count_tv.hide()
+            } else {
+                if (!question_list.isShown){
+                    count_tv.show()
+                    count_tv.text = listOfQuestions.filter { !it.isRead }.size.toString()
+                }
+            }
         }, {})
+    }
+
+    private fun setAllQuestionAsRead() {
+        listOfQuestions.filter { !it.isRead }.forEach { question ->
+            FirebaseFirestore.getInstance().collection("question")
+                    .document(question.id)
+                    .set(question.apply { isRead = true })
+                    .addOnSuccessListener { Timber.d("Question is read is updated") }
+        }
     }
 
     override fun onDestroy() {

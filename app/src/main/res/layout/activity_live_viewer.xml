@@ -67,15 +67,25 @@
             android:scaleType="centerInside"
             android:src="@drawable/btn_switch_camera" />
 
-        <ImageView
+        <FrameLayout
             android:id="@+id/notes"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
-            android:layout_weight="10"
-            android:onClick="onNotesClicked"
-            android:scaleType="centerInside"
-            android:src="@drawable/btn_notes" />
+            android:layout_weight="10">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/button_background"
+                android:onClick="onNotesClicked"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_question" />
+
+        </FrameLayout>
+
 
         <FrameLayout
             android:layout_width="match_parent"
