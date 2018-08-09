@@ -437,7 +437,7 @@ class ViewerActivity : AppCompatActivity(), VideoViewAdapter.VideoSelectedListen
 
             override fun onInviteReceived(channelID: String?, account: String?, uid: Int, extra: String?) {
                 runOnUiThread {
-                    this@ViewerActivity.showDialogWithAction("Guruji would like to join call with you",
+                    this@ViewerActivity.showDialogWithAction("Guruji would like to respond now",
                             "Call Request",
                             okText = "Accept",
                             cancelText = "Reject call",

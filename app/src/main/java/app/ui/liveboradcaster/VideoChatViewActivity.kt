@@ -3,6 +3,7 @@ package app.ui.liveboradcaster
 import android.Manifest
 import android.content.pm.PackageManager
 import android.databinding.ObservableArrayList
+import android.graphics.PixelFormat
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Environment
@@ -126,6 +127,7 @@ class VideoChatViewActivity : AppCompatActivity(), VideoViewAdapter.VideoSelecte
         if (agSurfaceView == null || agSurfaceView.isSelected) return
 
         //
+        agSurfaceView.surfaceView.holder.setFormat(PixelFormat.TRANSLUCENT)
         agSurfaceView.isSelected = true
         mVideoViewAdapter!!.notifyItemChanged(itemPosition)
 

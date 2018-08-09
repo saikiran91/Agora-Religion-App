@@ -1,6 +1,7 @@
 package app.ui.liveboradcaster;
 
 import android.graphics.Color;
+import android.graphics.PixelFormat;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
@@ -55,7 +56,6 @@ public class VideoViewAdapter extends RecyclerView.Adapter<VideoViewAdapter.View
                 if (surfaceParent != null) surfaceParent.removeAllViews();
                 //TODO do this Visibility thing in large_view too
                 agView.getSurfaceView().setVisibility(agView.getVisible() ? View.VISIBLE : View.GONE);
-                holder.frameLayout.setBackgroundColor(Color.TRANSPARENT);
                 holder.frameLayout.addView(agView.getSurfaceView());
             }
         }
