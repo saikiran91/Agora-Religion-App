@@ -77,5 +77,7 @@ dependencies {
     implementation 'io.agora.rtc:full-sdk:2.2.3'
 
     implementation 'com.google.code.gson:gson:2.8.4'
+
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
 }
 apply plugin: 'com.google.gms.google-services'

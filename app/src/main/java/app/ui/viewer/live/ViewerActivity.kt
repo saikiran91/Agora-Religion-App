@@ -90,16 +90,16 @@ class ViewerActivity : AppCompatActivity(), VideoViewAdapter.VideoSelectedListen
         switchToViewerUI()
         mSignaling.channelJoin(mRoomId)
 
-        send_btn.setOnClickListener {
+                                send_btn.setOnClickListener {
 
-            if (chat_et.getTrimmedText().isNotBlank()) {
-                val id = UUID.randomUUID().toString();
-                val msg = mGson.encode(Chat(id = id,
-                        message = chat_et.getTrimmedText(),
-                        userName = UserPrefs.name,
-                        userId = UserPrefs.userId,
-                        sendDate = Date().time,
-                        eventId = mRoomId!!))
+                            if (chat_et.getTrimmedText().isNotBlank()) {
+                                val id = UUID.randomUUID().toString();
+                                val msg = mGson.encode(Chat(id = id,
+                                        message = chat_et.getTrimmedText(),
+                                        userName = UserPrefs.name,
+                                        userId = UserPrefs.userId,
+                                        sendDate = Date().time,
+                                        eventId = mRoomId!!))
                 mSignaling.messageChannelSend(mRoomId, msg, id)
 
                 chat_et.text.clear()

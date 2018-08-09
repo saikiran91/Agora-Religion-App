@@ -6,70 +6,90 @@
     android:layout_height="match_parent"
     tools:context="app.ui.userselection.UserSelectionActivity">
 
-
-    <ImageView
-        android:id="@+id/logo_iv"
+    <com.flaviofaria.kenburnsview.KenBurnsView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
+        android:src="@drawable/myntra_splash_bg"
+        android:tint="#4D000000"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/logo_iv"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="24dp"
+        android:scaleType="centerInside"
+        app:elevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/srisrilogo" />
+        app:srcCompat="@drawable/myntra_logo" />
 
-    <RadioGroup
-        android:id="@+id/radio_group"
-        android:layout_width="0dp"
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/continue_btn"
-        app:layout_constraintEnd_toEndOf="@+id/logo_iv"
-        app:layout_constraintStart_toStartOf="@+id/logo_iv"
-        app:layout_constraintTop_toBottomOf="@+id/logo_iv"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintGuide_percent="0.5" />
 
-        <RadioButton
-            android:id="@+id/broadcaster_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="Broadcaster"
 
-            android:textSize="20sp" />
-
-        <RadioButton
-            android:id="@+id/viewer_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Viewer"
-            android:textSize="20sp" />
-    </RadioGroup>
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/continue_btn"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onContinueClicked"
-        android:text="Continue"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/colorAccent"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/logo_iv"
-        app:layout_constraintStart_toStartOf="@+id/logo_iv"
-        app:layout_constraintTop_toBottomOf="@+id/logo_iv"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintVertical_bias="0.0">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/broadcaster_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onBroadcasterClicked"
+            android:paddingBottom="18dp"
+            android:paddingTop="18dp"
+            android:text="Broadcaster"
+            android:textAllCaps="false"
+            android:textColor="@color/secondary_text"
+            android:textSize="16sp"
+            app:backgroundTint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="Or"
+            android:textSize="16sp" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/viewer_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onViewerClicked"
+            android:paddingBottom="18dp"
+            android:paddingTop="18dp"
+            android:text="Viewer"
+            android:textAllCaps="false"
+            android:textColor="@color/secondary_text"
+            android:textSize="16sp"
+            app:backgroundTint="@color/white" />
+
+    </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>

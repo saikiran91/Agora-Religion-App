@@ -2,14 +2,17 @@ package app.ui.viewer.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import app.model.UserPrefs
 import app.mvpbase.MvpBaseActivity
 import app.ui.addevent.AddEventActivity
+import app.ui.userselection.UserSelectionActivity
 import app.ui.viewer.ongoingbroadcaster.OngoingBroadcasterFragment
-import app.ui.viewer.upcomingbroadcaster.UpcomingBroadcasterFragment
 import app.util.replaceFragment
+import com.google.firebase.auth.FirebaseAuth
 import io.agora.religionapp.R
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
@@ -31,17 +34,18 @@ class HomeActivity : MvpBaseActivity(), HomeView {
         presenter.attachView(this)
 
         showFragment(OngoingBroadcasterFragment())
+        bottom_navigation.setOnNavigationItemSelectedListener {
 
-        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                when (tab.position) {
-                    0 -> showFragment(OngoingBroadcasterFragment())
-                    1 -> showFragment(UpcomingBroadcasterFragment())
-                }
+            appbar_layout.setExpanded(true, true)
+
+            when (it.itemId) {
+                R.id.menu_live -> showFragment(app.ui.ongoingbroadcaster.OngoingBroadcasterFragment())
+                R.id.menu_upcoming -> showFragment(app.ui.upcomingbroadcaster.UpcomingBroadcasterFragment())
             }
-        })
+            true
+        }
+
+        setSupportActionBar(toolbar)
         add_event.hide()
     }
 
@@ -64,5 +68,22 @@ class HomeActivity : MvpBaseActivity(), HomeView {
 
     fun onAddEventClicked(view: View) {
         startActivity(Intent(this, AddEventActivity::class.java))
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_home, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_signout -> {
+                FirebaseAuth.getInstance().signOut()
+                UserPrefs.clear()
+                finish()
+                startActivity(Intent(this, UserSelectionActivity::class.java))
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

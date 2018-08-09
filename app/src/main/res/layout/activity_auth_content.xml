@@ -10,124 +10,135 @@
     tools:showIn="@layout/activity_auth">
 
     <TextView
+        android:textStyle="bold"
         android:id="@+id/phone_auth_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Login/Register"
-        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginStart="8dp"
+        android:text="Log In"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/back_btn"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/back_btn"
+        app:layout_constraintTop_toTopOf="@+id/back_btn" />
 
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/name_ti"
-        android:layout_width="0dp"
+    <EditText
+        android:id="@+id/name_et"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edit_text_rounded"
+        android:hint="Name"
+        android:imeOptions="actionNext"
+        android:inputType="textNoSuggestions|textPersonName"
+        android:paddingBottom="12dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:paddingTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_auth_tv"
-        app:layout_constraintVertical_bias="0.0">
-
-        <EditText
-            android:id="@+id/name_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Preferred name"
-            android:imeOptions="actionNext"
-            android:inputType="textNoSuggestions|textPersonName" />
-    </android.support.design.widget.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/back_btn"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <com.rilixtech.CountryCodePicker
         android:id="@+id/country_code_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:paddingBottom="16dp"
         android:paddingTop="16dp"
         app:ccp_arrowSize="16sp"
-        app:ccp_textColor="@color/colorPrimaryDark"
         app:ccp_defaultNameCode="IN"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_ti"
-        app:layout_constraintVertical_bias="0.0" />
+        app:ccp_textColor="@color/secondary_text"
+        app:layout_constraintStart_toStartOf="@+id/name_et"
+        app:layout_constraintTop_toBottomOf="@+id/name_et" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/phone_ti"
+
+    <EditText
+        android:id="@+id/number_et"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:background="@drawable/edit_text_rounded"
+        android:hint="Enter phone number"
+        android:imeOptions="actionDone"
+        android:inputType="textNoSuggestions|phone"
+        android:paddingBottom="12dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:paddingTop="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/country_code_picker"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/name_et"
         app:layout_constraintStart_toEndOf="@+id/country_code_picker"
-        app:layout_constraintTop_toTopOf="@+id/country_code_picker">
+        app:layout_constraintTop_toTopOf="@+id/country_code_picker" />
 
-        <EditText
-            android:id="@+id/number_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter phone number"
-            android:imeOptions="actionDone"
-            android:inputType="textNoSuggestions|phone" />
-    </android.support.design.widget.TextInputLayout>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/send_code_btn"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:onClick="sendCodeOnClick"
         android:padding="18dp"
+        android:paddingBottom="18dp"
+        android:paddingTop="18dp"
         android:text="Send Code"
+        android:textAllCaps="false"
+        android:textColor="@color/secondary_text"
+        android:textSize="16sp"
+        app:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/name_et"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_ti" />
+        app:layout_constraintStart_toStartOf="@+id/name_et"
+        app:layout_constraintTop_toBottomOf="@+id/number_et" />
 
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/auth_ti"
+    <EditText
+        android:id="@+id/auth_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edit_text_rounded"
+        android:hint="Auth code"
+        android:imeOptions="actionDone"
+        android:inputType="numberPassword"
+        android:paddingBottom="12dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:paddingTop="12dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:passwordToggleEnabled="true">
+        app:layout_constraintTop_toBottomOf="@+id/back_btn" />
 
-        <EditText
-            android:id="@+id/auth_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Auth code"
-            android:imeOptions="actionDone"
-            android:inputType="numberPassword" />
-    </android.support.design.widget.TextInputLayout>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/verify_code_btn"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:onClick="verifyCodeOnClick"
         android:padding="18dp"
+        android:paddingBottom="18dp"
+        android:paddingTop="18dp"
         android:text="Verify Code"
+        android:textAllCaps="false"
+        android:textColor="@color/secondary_text"
+        android:textSize="16sp"
+        app:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/auth_et"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/auth_et"
         app:layout_constraintTop_toBottomOf="@+id/verification_tv" />
 
     <TextView
@@ -142,7 +153,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/auth_ti" />
+        app:layout_constraintTop_toBottomOf="@+id/auth_et" />
 
     <TextView
         android:id="@+id/change_tv"
@@ -158,16 +169,22 @@
         app:layout_constraintStart_toEndOf="@+id/verification_tv"
         app:layout_constraintTop_toTopOf="@+id/verification_tv" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/auth_logout_btn"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:onClick="signOuOnClick"
+        android:padding="18dp"
+        android:paddingBottom="18dp"
+        android:paddingTop="18dp"
         android:text="Logout"
+        android:textAllCaps="false"
+        android:textColor="@color/secondary_text"
+        android:textSize="16sp"
+        app:backgroundTint="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -178,9 +195,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:constraint_referenced_ids="phone_auth_tv,
-        send_code_btn,phone_ti,country_code_picker,name_ti"
-        tools:visibility="visible" />
+        app:constraint_referenced_ids="send_code_btn,number_et,country_code_picker,name_et"
+        tools:visibility="gone" />
 
 
     <android.support.constraint.Group
@@ -188,8 +204,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:constraint_referenced_ids="auth_ti,verify_code_btn,change_tv,verification_tv"
-        tools:visibility="gone" />
+        app:constraint_referenced_ids="auth_et,verify_code_btn,change_tv,verification_tv"
+        tools:visibility="visible" />
 
 
     <android.support.constraint.Group
@@ -214,5 +230,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.6"
+        android:background="?selectableItemBackgroundBorderless"
+        android:onClick="onBackClicked"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back_arrow" />
 
 </android.support.constraint.ConstraintLayout>

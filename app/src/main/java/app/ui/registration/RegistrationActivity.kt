@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import app.model.USER
 import app.model.UserPrefs
+import app.ui.userselection.UserSelectionActivity
 import app.ui.viewer.home.HomeActivity
 import app.util.hide
 import app.util.hideKeyboard
@@ -100,6 +101,14 @@ class RegistrationActivity : AppCompatActivity() {
     fun signOuOnClick(view: View) {
         view.hideKeyboard()
         signOut()
+    }
+
+    fun onBackClicked(view: View) {
+        view.hideKeyboard()
+        firebaseAuth.signOut()
+        UserPrefs.clear()
+        finish()
+        startActivity(Intent(this, UserSelectionActivity::class.java))
     }
 
     fun changePhoneNumber(view: View) {
@@ -241,5 +250,12 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun showProcessBar(visibility: Boolean) {
         progress_bar.visibility = if (visibility) View.VISIBLE else View.GONE
+    }
+
+    override fun onBackPressed() {
+        firebaseAuth.signOut()
+        UserPrefs.clear()
+        finish()
+        startActivity(Intent(this, UserSelectionActivity::class.java))
     }
 }

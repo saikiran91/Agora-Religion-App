@@ -11,22 +11,13 @@ import javax.inject.Inject
 class UserSelectionPresenter @Inject
 constructor(private val dataManager: DataManager) : BasePresenter<UserSelectionView>() {
 
-    private var user: USER = USER.NONE
-
     fun onBroadcasterSelected() {
-        user = USER.BROADCASTER
+        mvpView?.launchBroadcasterRegistration(USER.BROADCASTER)
+        mvpView?.exitActivity()
     }
 
     fun onViewerSelected() {
-        user = USER.VIEWER
-    }
-
-    fun onContinueClicked() {
-        when (user) {
-            USER.NONE -> mvpView?.showError("Please select the user type")
-            USER.VIEWER -> mvpView?.launchViewerRegistration(user)
-            USER.BROADCASTER -> mvpView?.launchBroadcasterRegistration(user)
-        }
+        mvpView?.launchViewerRegistration(USER.VIEWER)
         mvpView?.exitActivity()
     }
 }
